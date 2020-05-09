@@ -16,6 +16,9 @@ scikit-learn = "*"
 sqlalchemy = "*"
 pymysql = "*"
 flask = "*"
+aiofiles = "*"
+fastapi = "*"
+Jinja2 = "*"
 
 [requires]
 python_version = "3.7"

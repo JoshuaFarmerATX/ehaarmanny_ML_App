@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="home"></section>
+<header class="bg-dark text-center py-5 mb-4">
+    <div class="container">
+      <h1 class="font-weight-light text-white">Meet the Team</h1>
+    </div>
+  </header>
+  
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Team Member 1 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Edward.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Edward</h2>
+                        <p class="myP">Ed was the Project Manager. He was responsible for helping coordinate frontend and backend compatibility and created the map graphic.</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Edward Haarmann IV</h5>
+            <div class="card-text text-black-50">Project Manager</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Daniela.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Daniela</h2>
+                        <p class="myP">Daniela was the backend developer/tester, and was responsible for building the databases and testing across the entire project.</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Daniela Matos</h5>
+            <div class="card-text text-black-50">Backend Developer/Tester</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Josh.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Josh</h2>
+                        <p class="myP">Josh was the frontend developer and designed all website layouts as well as assisted with the deployment of the backend data.</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Josh Farmer</h5>
+            <div class="card-text text-black-50">Frontend Developer</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 4 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Sinah.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Sinah</h2>
+                        <p class="myP">Sinah was a backend developer/tester who helped build the databases as well as created the bar and bubble chart visualizations.</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Sinah Kang</h5>
+            <div class="card-text text-black-50">Backend Developer/Tester</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 5 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Chris.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Chris</h2>
+                        <p class="myP">Chris was the lead developer and responsible for managing the git hub, as well as building the API, API documentation and all associated routes.</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Christopher Swanson</h5>
+            <div class="card-text text-black-50">Lead Developer</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 6 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <div class="hovereffect">
+                <img src="{{ url_for('static', path='/images/Austin.jpg') }}" class="card-img-top img-responsive" alt="">
+                    <div class="overlay">
+                        <h2 class="myH2" style="font-size: 30px">About Austin</h2>
+                        <p class="myP">Austin Placeholder Text</p>
+                    </div>
+            </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Austin Spacek</h5>
+            <div class="card-text text-black-50">Lead Developer</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <!-- /.row -->
+  
+  </div>
+  <!-- /.container -->
+{% endblock %}
