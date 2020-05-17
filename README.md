@@ -18,14 +18,14 @@ https://data.worldbank.org/indicator/sp.pop.65up.to.zs
 
 In our research to learn about time series analysis and forecasting, we came across with a few sites that helped us to understand time series modeling, as well as how to create a model.
 
-#### [Statistical forecasting:] (http://people.duke.edu/~rnau/411home.htm) <br />
+#### [Statistical forecasting:](http://people.duke.edu/~rnau/411home.htm) <br />
 Notes on regression and time series analysis: This site provides a deep dive into time series analysis, explaining every aspect in detail. 
 
 
-#### [Complete guide to create a Time Series Forecast (with Codes in Python):] (http://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/) <br />
+#### [Complete guide to create a Time Series Forecast (with Codes in Python):](http://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/) <br />
 It has Python code examples which really helped us.
 
-#### [Handling a Non-Stationary Time Series in Python:] (https://www.analyticsvidhya.com/blog/2018/09/non-stationary-time-series-python/)
+#### [Handling a Non-Stationary Time Series in Python:](https://www.analyticsvidhya.com/blog/2018/09/non-stationary-time-series-python/)
 
 ### Technologies:
 * Flask
@@ -43,6 +43,7 @@ It has Python code examples which really helped us.
 
 ### Project Team
 
+Austin Spacek - Backend Developer <br />
 Christopher Swanson - Lead Developer <br />
 Daniela Matos - Backend Developer/Tester <br />
 Ed Haarmann IV - Project Manager <br />
