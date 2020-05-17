@@ -1,5 +1,5 @@
 
-# Coronavirus COVID-19 Application
+# Coronavirus COVID-19 Dashboard
 
 Interactive dashboard to explore COVID-19 data from Johns Hopkins University and providing free API.
 This project aims to predict the number of new cases of COVID-19 in USA for the next 13 days.
