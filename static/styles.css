@@ -387,11 +387,11 @@ body {
 }
 .cardH3 {
     font-size: 20px;
-    color: #fff;
+    color: rgb(46, 45, 45);
 }
 .cardP {
     font-size: 40px;
-    color: #fff;
+    color: rgb(46, 45, 45);
 }
 .card {
     background-color: rgb(255, 255, 255);
