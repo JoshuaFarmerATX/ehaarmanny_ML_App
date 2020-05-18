@@ -22,7 +22,6 @@ Jinja2 = "*"
 uvicorn = "*"
 pystan = "==2.19.1.1"
 fbprophet = "*"
-statsmodels = "*"
 
 [requires]
 python_version = "3.7"
