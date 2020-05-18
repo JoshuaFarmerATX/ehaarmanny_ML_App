@@ -20,3 +20,7 @@ async def home(request: Request):
 @app.get("/team")
 async def team(request: Request):
     return templates.TemplateResponse("team.html", {"request": request})
+
+@app.get("/community")
+async def community(request:Request):
+    return templates.TemplateResponse("community.html", {"request": request})

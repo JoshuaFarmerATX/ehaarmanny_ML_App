@@ -59,7 +59,6 @@ def apiDataCallTimeSeries(call, region):
                 'cases': int(responses[i - 1].get('Recovered')),
                 'deaths': int(responses[i - 1].get('Deaths'))
             })
-    pprint(dict)  
     dict[:] = [d for d in dict if d.get('date') >= '2020-03-01']
 
     return dict
@@ -70,5 +69,5 @@ def apiDataCallTimeSeries(call, region):
 # multiDict = apiDataCallMulti('us/most_recent', 'State')
 # pprint(multiDict)
 
-multiDictTS = apiDataCallTimeSeries('timeseries/USA', 'Country')
-pprint(multiDictTS)
+# multiDictTS = apiDataCallTimeSeries('timeseries/USA', 'Country')
+# pprint(multiDictTS)
