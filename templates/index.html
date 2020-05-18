@@ -11,7 +11,7 @@
                       Cases
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title cardP">{{ cases }}</h5>
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(cases) }}</h5>
                     </div>
                   </div>
             </div>
@@ -21,7 +21,7 @@
                       Recoveries
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title cardP">{{ recoveries }}</h5>
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(recoveries) }}</h5>
                     </div>
                   </div>
             </div>
@@ -31,7 +31,7 @@
                       Deaths
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title cardP">{{ deaths }}</h5>
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(deaths) }}</h5>
                     </div>
                   </div>
             </div>
