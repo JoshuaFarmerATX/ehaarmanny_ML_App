@@ -23,6 +23,7 @@ uvicorn = "*"
 pystan = "==2.19.1.1"
 fbprophet = "*"
 statsmodels = "*"
+plotly = "*"
 
 [requires]
 python_version = "3.7"
