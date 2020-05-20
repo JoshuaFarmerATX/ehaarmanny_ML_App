@@ -8,6 +8,9 @@ from fbprophet.diagnostics import cross_validation
 from fbprophet.diagnostics import performance_metrics
 from fbprophet.plot import plot_cross_validation_metric
 
+from fbprophet.plot import plot_plotly
+import plotly.offline as py
+
 # Import data 
 r = requests.get("https://api-pc6dbtrtla-uc.a.run.app/API/timeseries/usa")
 response_dict = r.json()
@@ -32,10 +35,11 @@ def predict(df, days):
 
     future = prophet.make_future_dataframe(periods=days)
     forecast = prophet.predict(future)
-    df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
-    fig_forecast = prophet.plot(forecast)
-
-    return df_forecast
+    df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].set_index('ds')
+    # fig_forecast = prophet.plot(forecast)
+    fig_forecast = plot_plotly(prophet, forecast)  
+    
+    return py.iplot(fig_forecast)
 
 # Cross-validating 
 
@@ -48,6 +52,6 @@ def cross_validate(df):
     df_performance = performance_metrics(df_cv)
     fig_performance = plot_cross_validation_metric(df_cv, metric='mape')
 
-    return df_performance
+    return plt.show()
 
-print(predict(df_cases_fb))
+print(predict(df_cases_fb, 30))
