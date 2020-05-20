@@ -5,7 +5,21 @@ import requests
 import plotly.plotly as py
 import plotly.graph_objs as go
 
-import pandas as pd
+# Streamlit caching template - to be modified to be compatible with modeling results and "State" table
+import time
+
+@st.cache(suppress_st_warning=True)
+def expensive_computation(a, b):
+    st.write("Cache miss: expensive_computation(", a, ",", b, ") ran")
+    time.sleep(2)  # This makes the function take 2s to run
+    return a * b
+
+a = 2
+b = 210  # 👈 Changed this
+res = expensive_computation(a, b)
+
+st.write("Result:", res)
+
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/wind_speed_laurel_nebraska.csv')
 
