@@ -12,6 +12,8 @@ from fbprophet.plot import plot_cross_validation_metric
 r = requests.get("https://api-pc6dbtrtla-uc.a.run.app/API/timeseries/usa")
 response_dict = r.json()
 df = pd.DataFrame.from_dict(response_dict)
+
+
 df = df.rename(columns={'Total Results as of Date': 'Date'})
 df['Date'] = pd.to_datetime(df['Date']).dt.date
 df['NewCases'] = df['Cases'] - df['Cases'].shift(1)
@@ -50,4 +52,5 @@ def cross_validate(df):
 
     return df_performance
 
-print(predict(df_cases_fb))
+df_predict = predict(df_cases_fb, 10)
+df_predict.to_csv("prophet_10days.csv")

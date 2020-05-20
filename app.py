@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from covidSource import *
+from prophet import predict, cross_validate
 
 app = FastAPI()
 
@@ -24,3 +25,7 @@ async def team(request: Request):
 @app.get("/community")
 async def community(request:Request):
     return templates.TemplateResponse("community.html", {"request": request})
+
+@app.get("/machine_learning")
+async def machine_learning(request:Request):
+    return templates.TemplateResponse("machine_learning.html", {"request": request})
