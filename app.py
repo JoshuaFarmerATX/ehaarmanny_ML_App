@@ -17,6 +17,10 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "cases": apiData('global_totals/most_recent').get('cases'), "recoveries": apiData('global_totals/most_recent').get('recoveries'), "deaths": apiData('global_totals/most_recent').get('deaths')})
 
+@app.get("/{region}/{qtype}/{timeframe}")
+async def mlpath(request: Request, region: str, qtype: str, timeframe: int):
+    return templates.TemplateResponse("machinelearning.html", {"request": request, "region": region, "qtype": qtype, "timeframe": timeframe})
+
 @app.get("/team")
 async def team(request: Request):
     return templates.TemplateResponse("team.html", {"request": request})
