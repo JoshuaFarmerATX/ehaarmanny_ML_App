@@ -51,6 +51,7 @@ def predict_cases(state, days):
     forecast = prophet.predict(future)
     df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
     df_forecast = df_forecast.assign(yhat = lambda df: df['yhat'].apply(lambda e: max(0, e))).assign(yhat_lower = lambda df: df['yhat_lower'].apply(lambda e: max(0, e))).assign(yhat_upper = lambda df: df['yhat_upper'].apply(lambda e: max(0, e)))
+    df_forecast = df_forecast.round(0)
     fig_forecast = prophet.plot(forecast)
 
     return df_forecast
@@ -66,6 +67,7 @@ def predict_deaths(state, days):
     forecast = prophet.predict(future)
     df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
     df_forecast = df_forecast.assign(yhat = lambda df: df['yhat'].apply(lambda e: max(0, e))).assign(yhat_lower = lambda df: df['yhat_lower'].apply(lambda e: max(0, e))).assign(yhat_upper = lambda df: df['yhat_upper'].apply(lambda e: max(0, e)))
+    df_forecast = df_forecast.round(0)
     fig_forecast = prophet.plot(forecast)
 
     return df_forecast
@@ -97,4 +99,4 @@ def cv_deaths(state):
 
     return plt.show()
 
-print(predict_cases("New York", 7))
+print(predict_deaths("Oregon", 7))
