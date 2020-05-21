@@ -33,6 +33,7 @@ def predict(df, days):
     future = prophet.make_future_dataframe(periods=days)
     forecast = prophet.predict(future)
     df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].set_index('ds')
+    df_forecast = df_forecast.round(0)
     # fig_forecast = prophet.plot(forecast)
     fig_forecast = plot_plotly(prophet, forecast)  
     
@@ -50,4 +51,4 @@ def cross_validate(df):
 
     return plt.show()
 
-print(cross_validate(df_cases_fb))
+print(predict(df_cases_fb, 7))
