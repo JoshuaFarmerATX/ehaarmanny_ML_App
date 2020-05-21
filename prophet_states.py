@@ -21,7 +21,7 @@ def prepdata_cases(state):
     df['Date'] = pd.to_datetime(df['Date']).dt.date
     df['NewCases'] = df['Cases'] - df['Cases'].shift(1)
 
-    df_cases = df.loc[df["Date"]>=datetime.date(2020,4,1)]
+    df_cases = df.loc[df["Date"]>=datetime.date(2020,3,11)]
     df_cases = df_cases[["Date", "NewCases"]].rename(columns={"Date": "ds", "NewCases": "y"})
 
     return df_cases
@@ -34,7 +34,7 @@ def prepdata_deaths(state):
     df['Date'] = pd.to_datetime(df['Date']).dt.date
     df['NewDeaths'] = df['Deaths'] - df['Deaths'].shift(1)
     
-    df_deaths = df.loc[df["Date"]>=datetime.date(2020,4,8)]
+    df_deaths = df.loc[df["Date"]>=datetime.date(2020,3,11)]
     df_deaths = df_deaths[["Date", "NewDeaths"]].rename(columns={"Date": "ds", "NewDeaths": "y"})
     
     return df_deaths
@@ -50,6 +50,7 @@ def predict_cases(state, days):
     future = prophet.make_future_dataframe(periods=days)
     forecast = prophet.predict(future)
     df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
+    df_forecast = df_forecast.assign(yhat = lambda df: df['yhat'].apply(lambda e: max(0, e))).assign(yhat_lower = lambda df: df['yhat_lower'].apply(lambda e: max(0, e))).assign(yhat_upper = lambda df: df['yhat_upper'].apply(lambda e: max(0, e)))
     fig_forecast = prophet.plot(forecast)
 
     return df_forecast
@@ -64,6 +65,7 @@ def predict_deaths(state, days):
     future = prophet.make_future_dataframe(periods=days)
     forecast = prophet.predict(future)
     df_forecast = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
+    df_forecast = df_forecast.assign(yhat = lambda df: df['yhat'].apply(lambda e: max(0, e))).assign(yhat_lower = lambda df: df['yhat_lower'].apply(lambda e: max(0, e))).assign(yhat_upper = lambda df: df['yhat_upper'].apply(lambda e: max(0, e)))
     fig_forecast = prophet.plot(forecast)
 
     return df_forecast
@@ -76,7 +78,7 @@ def cv_cases(state):
     prophet = Prophet()
     prophet.fit(df)
 
-    df_cv = cross_validation(prophet, initial='30 days', period='4 days', horizon='7 days')
+    df_cv = cross_validation(prophet, initial='50 days', period='4 days', horizon='7 days')
     df_performance = performance_metrics(df_cv)
     fig_performance = plot_cross_validation_metric(df_cv, metric='mape')
 
@@ -89,10 +91,10 @@ def cv_deaths(state):
     prophet = Prophet()
     prophet.fit(df)
 
-    df_cv = cross_validation(prophet, initial='23 days', period='4 days', horizon='7 days')
+    df_cv = cross_validation(prophet, initial='50 days', period='4 days', horizon='7 days')
     df_performance = performance_metrics(df_cv)
     fig_performance = plot_cross_validation_metric(df_cv, metric='mape')
 
     return plt.show()
 
-print(predict_cases("New Jersey", 7))
+print(predict_cases("New York", 7))
