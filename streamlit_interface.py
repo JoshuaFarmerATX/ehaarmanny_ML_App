@@ -6,18 +6,17 @@ import requests
 import plotly.plotly as py
 import plotly.graph_objs as go
 
+
 # US Cases Model: https://models-pc6dbtrtla-uc.a.run.app/cases/#/
 # US Deaths Model: https://models-pc6dbtrtla-uc.a.run.app/deaths/#/
 # Model for Cases for a State: https://models-pc6dbtrtla-uc.a.run.app/states/cases/STATE/#/
 # Model for Deaths for a State: https://models-pc6dbtrtla-uc.a.run.app/states/deaths/STATE/#
 
-# Raw data table with state selector - throwing error (will be addressed next)
+
 region_list = ["USA", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia","Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
-region_selector = st.selectbox("Select Region", region_list)
-
-number_of_days = st.number_input("Predict Number of Days:", min_value=1, max_value=30, value=1, step=1)
-
-cases_or_deaths = st.selectbox("Deaths or Cases:", ["Cases", "Deaths"])
+region_selector = st.sidebar.selectbox("Select Region", region_list)
+number_of_days = st.sidebar.number_input("Predict Number of Days:", min_value=1, max_value=30, value=1, step=1)
+cases_or_deaths = st.sidebar.selectbox("Deaths or Cases:", ["Cases", "Deaths"])
 
 @st.cache
 def return_raw_data(region):
@@ -44,7 +43,7 @@ df = return_raw_data(region_selector)
 
 model_df = return_model_data(region_selector, number_of_days, cases_or_deaths.lower())
 
-st.title(f"COVID 19 USA Data Dashboard - {region_selector}")
+st.title(f"COVID 19 Projected Number of {cases_or_deaths} in {region_selector} for the Next {number_of_days} Day(s)")
 
 # Plot Test v1
 upper_bound = go.Scatter(
@@ -78,14 +77,15 @@ lower_bound = go.Scatter(
 data = [lower_bound, trace, upper_bound]
 
 layout = go.Layout(
-    yaxis=dict(title='Number of New Cases - By Day'),
+    yaxis=dict(title=f"Number of New {cases_or_deaths} - By Day"),
     title=f"Number of New {cases_or_deaths} in {region_selector} - With Error Bars",
     showlegend = False)
 
 fig = go.Figure(data=data, layout=layout)
-st.plotly_chart(fig, filename='pandas-continuous-error-bars')
+st.plotly_chart(fig, filename='pandas-continuous-error-bars', use_container_width=True)
 
+st.title(f"{region_selector} - Cumulative Raw Data") 
 if region_selector == 'USA':
-    st.write(df[["Country", "Totals as of Date", "Cases", "Deaths"]])
+    st.table(df[["Country", "Totals as of Date", "Cases", "Deaths"]].sort_values(by="Totals as of Date", ascending=False))
 else:    
-    st.write(df[["State", "Totals as of Date", "Cases", "Deaths"]])
+    st.table(df[["State", "Totals as of Date", "Cases", "Deaths"]].sort_values(by="Totals as of Date", ascending=False))
