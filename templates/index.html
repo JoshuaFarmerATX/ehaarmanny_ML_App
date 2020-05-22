@@ -3,6 +3,42 @@
 <section class="home">
 </section>
 <div class='bodyDiv mx-5' style="container-fluid">
-    <h1>Placeholder</h1>
+    <div class='container mt-5'>
+        <div class='row justify-content-md-center'>
+            <div class='col-md-4 my-1'>
+                <div class="card">
+                    <div class="card-header cardH3">
+                      Cases
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(cases) }}</h5>
+                    </div>
+                  </div>
+            </div>
+            <div class='col-md-4 my-1'>
+                <div class="card">
+                    <div class="card-header cardH3">
+                      Recoveries
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(recoveries) }}</h5>
+                    </div>
+                  </div>
+            </div>
+            <div class='col-md-4 my-1'>
+                <div class="card">
+                    <div class="card-header cardH3">
+                      Deaths
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title cardP">{{ "{:,.0f}".format(deaths) }}</h5>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid m-4">
+  <iframe src="https://covid-api-274519.uc.r.appspot.com/" width="100%" height = "1200"></iframe>
 </div>
 {% endblock %}
