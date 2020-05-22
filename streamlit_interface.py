@@ -22,18 +22,31 @@ region_selector = st.selectbox("Select Region", region_list)
 number_of_days = st.number_input("Predict Number of Days:", min_value=1, max_value=30, value=1, step=1)
 
 cases_or_deaths = st.selectbox("Deaths or Cases:", ["Cases", "Deaths"])
-cases_or_deaths_str = cases_or_deaths.lower()
 
-df = pd.DataFrame()
-model_df = pd.DataFrame()
-if region_selector == 'USA':
-    df = pd.read_json(f"https://api-pc6dbtrtla-uc.a.run.app/API/timeseries/{region_selector}")
-    model_df = pd.read_json(f"https://models-pc6dbtrtla-uc.a.run.app/{cases_or_deaths_str}/{number_of_days}/") #need number of days
-else:
-    state_str = region_selector.replace(' ', "%20")
-    df = pd.read_json(f"https://api-pc6dbtrtla-uc.a.run.app/API/us/timeseries/{cases_or_deaths_str}/{state_str}")
-    model_df = pd.read_json(f"https://models-pc6dbtrtla-uc.a.run.app/states/{cases_or_deaths_str}/{state_str}/{number_of_days}/") #need number of days
-    
+@st.cache
+def return_raw_data(region):
+    df = pd.DataFrame()
+    if region_selector == 'USA':
+        df = pd.read_json(f"https://api-pc6dbtrtla-uc.a.run.app/API/timeseries/{region}")
+    else:
+        state_str = region.replace(' ', "%20")
+        df = pd.read_json(f"https://api-pc6dbtrtla-uc.a.run.app/API/us/timeseries/totals/{state_str}")
+    return df
+
+@st.cache
+def return_model_data(region, days, cases_or_deaths_str):
+    df = pd.DataFrame()
+    if region_selector == 'USA':
+        df = pd.read_json(f"https://models-pc6dbtrtla-uc.a.run.app/{cases_or_deaths_str}/{days}/") #need number of days
+    else:
+        state_str = region.replace(' ', "%20")
+        df = pd.read_json(f"https://models-pc6dbtrtla-uc.a.run.app/states/{cases_or_deaths_str}/{state_str}/{days}/") #need number of days
+    return df
+
+
+df = return_raw_data(region_selector)
+
+model_df = return_model_data(region_selector, number_of_days, cases_or_deaths.lower())
 
 st.title(f"COVID 19 USA Data Dashboard - {region_selector}")
 
