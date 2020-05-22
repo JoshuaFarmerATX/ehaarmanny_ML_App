@@ -6,6 +6,9 @@ This project aims to predict the number of new daily cases and deaths of COVID-1
 
 ### Link to the App:
 
+### To run localy the predictions:
+streamlit run streamlit_interface.py
+
 ### Update frequency:
 Once a day around 08:00 PM (CDT).
 
@@ -13,6 +16,8 @@ Once a day around 08:00 PM (CDT).
 https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data
 
 https://data.worldbank.org/indicator/sp.pop.65up.to.zs
+
+https://api-pc6dbtrtla-uc.a.run.app/docs
 
 ### Model:
 We used Prophet model developed by Facebook for producing forecasts for the future Covid-19 cases and deaths in the US.
