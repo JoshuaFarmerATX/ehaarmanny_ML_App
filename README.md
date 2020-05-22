@@ -30,6 +30,7 @@ More information about Prophet model can be found at https://facebook.github.io/
 * Google Cloud Platform
 * HTML and CSS
 * JavaScript
+* Jinja
 * MySQL
 * Plotly
 * Postman
