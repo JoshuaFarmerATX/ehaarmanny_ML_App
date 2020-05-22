@@ -2,7 +2,7 @@
 # Coronavirus COVID-19 Dashboard
 
 Interactive dashboard to explore COVID-19 data from Johns Hopkins University and providing free API.
-This project aims to predict the number of new cases and deaths of COVID-19 in USA.
+This project aims to predict the number of new daily cases and deaths of COVID-19 in USA.
 
 ### Link to the App:
 
@@ -14,9 +14,9 @@ https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data
 
 https://data.worldbank.org/indicator/sp.pop.65up.to.zs
 
-### Research
-
-
+### Model:
+We used Prophet model developed by Facebook for producing forecasts for the future Covid-19 cases and deaths in the US.
+More information about Prophet model can be found at https://facebook.github.io/prophet/.
 
 ### Technologies:
 * Flask
