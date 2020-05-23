@@ -6,26 +6,29 @@ from covidSource import *
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
+
+@app.route("/", methods=["GET", "POST"])
 def home():
-    if request.method == 'POST':
+    if request.method == "POST":
         req = request.form
-        qtype = req['qtype']
-        duration = req['duration']
-        region = req['region']
+        qtype = req["qtype"]
+        duration = req["duration"]
+        region = req["region"]
         print(qtype, duration, region)
         return redirect(request.url)
 
     return render_template(
-        "index.html", 
-        cases= apiData('global_totals/most_recent').get('cases'), 
-        recoveries= apiData('global_totals/most_recent').get('recoveries'), 
-        deaths= apiData('global_totals/most_recent').get('deaths')
-        )
+        "index.html",
+        cases=apiData("global_totals/most_recent").get("cases"),
+        recoveries=apiData("global_totals/most_recent").get("recoveries"),
+        deaths=apiData("global_totals/most_recent").get("deaths"),
+    )
+
 
 @app.route("/team")
 def team():
     return render_template("team.html")
+
 
 @app.route("/community")
 def community():
