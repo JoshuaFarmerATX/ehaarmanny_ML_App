@@ -45,6 +45,8 @@ https://github.com/JoshuaFarmerATX/fastAPIPlayground.git
 
 ### Project Flowchart
 
+![Page](P3_Operation.jpg)
+
 ### Project Team
 
 Austin Spacek - Lead Developer <br />
