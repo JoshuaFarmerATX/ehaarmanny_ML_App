@@ -4,7 +4,7 @@
 Interactive dashboard to explore COVID-19 data from Johns Hopkins University and providing free API.
 This project aims to predict the number of new daily cases and deaths of COVID-19 in USA.
 
-### Link to the App: https://covid-machine-learning-pc6dbtrtla-uc.a.run.app
+### Link to the App: **NOTE** Hosting temporarily removed due to cost of hosting on the cloud. Link will be updated once hosting has been resumed. 
 
 ### To run localy the predictions:
 streamlit run streamlit_interface.py
